@@ -1,0 +1,29 @@
+# application-prod.yml (produção)
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    root: WARN
+    com.portfolio.apiintegration: INFO
+  file:
+    name: /var/log/api-integration-system.log
+
+external-apis:
+  viacep:
+    timeout: 3000
+  weather:
+    timeout: 3000
+  currency:
+    timeout: 3000
+
+spring:
+  cache:
+    caffeine:
+      spec: maximumSize=5000,expireAfterWrite=600s # Cache maior para prod
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

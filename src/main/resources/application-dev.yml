@@ -1,0 +1,22 @@
+# application-dev.yml (desenvolvimento)
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.portfolio.apiintegration: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+
+external-apis:
+  viacep:
+    timeout: 10000
+  weather:
+    timeout: 10000
+  currency:
+    timeout: 10000
+
+spring:
+  cache:
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=60s # Cache menor para dev

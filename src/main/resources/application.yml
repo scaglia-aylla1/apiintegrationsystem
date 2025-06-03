@@ -1,0 +1,63 @@
+# application.yml (configuração principal)
+spring:
+  application:
+    name: api-integration-system
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=300s
+
+# Configurações de APIs externas
+external-apis:
+  viacep:
+    base-url: https://viacep.com.br/ws
+    timeout: 5000
+  weather:
+    base-url: https://api.openweathermap.org/data/2.5
+    timeout: 5000
+    api-key: ${WEATHER_API_KEY:your-api-key}
+  currency:
+    base-url: https://api.exchangerate-api.com/v4/latest
+    timeout: 5000
+
+# Configurações do RestTemplate
+rest-template:
+  connection-timeout: 5000
+  read-timeout: 10000
+  max-connections-per-route: 20
+  max-connections-total: 100
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+  info:
+    env:
+      enabled: true
+
+# Logging
+logging:
+  level:
+    com.portfolio.apiintegration: DEBUG
+    org.springframework.web.client: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/api-integration-system.log
+
+# Info
+info:
+  app:
+    name: API Integration System
+    description: Sistema de integração com APIs externas
+    version: 1.0.0
+    developer: Aylla Scaglia
