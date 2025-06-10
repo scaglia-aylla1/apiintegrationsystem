@@ -1,4 +1,4 @@
-# application.yml (configuração principal)
+# application.yml (configuraÃ§Ã£o principal)
 spring:
   application:
     name: api-integration-system
@@ -10,7 +10,7 @@ spring:
     caffeine:
       spec: maximumSize=1000,expireAfterWrite=300s
 
-# Configurações de APIs externas
+# ConfiguraÃ§Ãµes de APIs externas
 external-apis:
   viacep:
     base-url: https://viacep.com.br/ws
@@ -23,7 +23,7 @@ external-apis:
     base-url: https://api.exchangerate-api.com/v4/latest
     timeout: 5000
 
-# Configurações do RestTemplate
+# ConfiguraÃ§Ãµes do RestTemplate
 rest-template:
   connection-timeout: 5000
   read-timeout: 10000
@@ -58,6 +58,6 @@ logging:
 info:
   app:
     name: API Integration System
-    description: Sistema de integração com APIs externas
+    description: Sistema de integraÃ§Ã£o com APIs externas
     version: 1.0.0
     developer: Aylla Scaglia
